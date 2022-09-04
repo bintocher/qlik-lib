@@ -1,2 +1,3 @@
 # qlik-lib
-Qlik functions library
+
+Библиотека полезных функций для работы в Qlik
