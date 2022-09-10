@@ -3,6 +3,7 @@
 ## Описание
 Известно, что для правильной работы модели данных, таблицы должны быть соединены между собой только 1 полем, а что делать если у нас в 2 или более таблицах от 2 одинаковых полей?
 Мы же не хотим держать SSyn-таблицы внутри модели? Иначе у нас будут не верные расчёты..
+
 ![image](https://user-images.githubusercontent.com/8188055/189489304-47246296-1770-4478-ae8d-c67344823c6f.png)
 
 Тут нам на помощь приходит функция создания промежуточной таблицы связей между таблицами.
@@ -16,10 +17,13 @@ CALL ls_LinkTable ('имя новой или существующей табли
 CALL ls_LinkTable ('plan-fact_link', 'table_sales', 'period, id_goods, id_shop');
 CALL ls_LinkTable ('plan-fact_link', 'table_plan', 'period, id_goods, id_shop');
 ```
+
 ![image](https://user-images.githubusercontent.com/8188055/189489443-57ebaaad-177d-42f8-8f57-5dc24f10ea3a.png)
 
 Результатом выполнения функций - будет новая таблица, в которой будет ключевое поле и 3 поля из 2 таблиц, в основных таблицах останется только ключевое поле
+
 **Важно!** На ключевое поле - используется функции AUTONUMBER() для оптимизации работы Qlik Engine, и уменьшения объемов данных.
+
 ![image](https://user-images.githubusercontent.com/8188055/189489593-383f5b8b-8b30-41a1-b86c-6117adb193c7.png)
 
 Тестовое приложение можно забрать тут: [link tables.zip](https://github.com/bintocher/qlik-lib/files/9540704/link.tables.zip)
