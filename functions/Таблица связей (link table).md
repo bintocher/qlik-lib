@@ -1,8 +1,8 @@
 # Таблица связей через функцию
 
 ## Описание
-Известно, что для правильной работы модели данных, таблицы должны быть соеденены между собой только 1 полем, а что делать если у нас в 2 или более таблицах от 2 одинаковых полей? 
-Мы же не хотим держать SSyn-таблицы внутри модели? Иначе у нас будут не верные рассчёты..
+Известно, что для правильной работы модели данных, таблицы должны быть соединены между собой только 1 полем, а что делать если у нас в 2 или более таблицах от 2 одинаковых полей?
+Мы же не хотим держать SSyn-таблицы внутри модели? Иначе у нас будут не верные расчёты..
 ![image](https://user-images.githubusercontent.com/8188055/189489304-47246296-1770-4478-ae8d-c67344823c6f.png)
 
 Тут нам на помощь приходит функция создания промежуточной таблицы связей между таблицами.
@@ -18,7 +18,7 @@ CALL ls_LinkTable ('plan-fact_link', 'table_plan', 'period, id_goods, id_shop');
 ```
 ![image](https://user-images.githubusercontent.com/8188055/189489443-57ebaaad-177d-42f8-8f57-5dc24f10ea3a.png)
 
-Результатом выполенения фунций - будет новая таблица, в которой будет ключевое поле и 3 поля из 2 таблиц, в основных таблицах останется только ключевое поле
+Результатом выполнения функций - будет новая таблица, в которой будет ключевое поле и 3 поля из 2 таблиц, в основных таблицах останется только ключевое поле
 **Важно!** На ключевое поле - используется функции AUTONUMBER() для оптимизации работы Qlik Engine, и уменьшения объемов данных.
 ![image](https://user-images.githubusercontent.com/8188055/189489593-383f5b8b-8b30-41a1-b86c-6117adb193c7.png)
 
@@ -34,7 +34,7 @@ SUB ls_LinkTable (ls_linkTableName, ls_table, ls_fields)
 // Если таблица связей не существует, то она будет создана. Если таблица связей существует, то она будет обновлена
 //
 // @параметр1 String: Название новой или существующей таблицы связей.
-// @параметр2 String: Название таблицы из которой будут загружены поля.
+// @параметр2 String: Название таблицы, из которой будут загружены поля.
 // @параметр3 String: Названия полей, разделенных запятой которые будут помещены в таблицу связей.
 //
 // @синтаксис: CALL ls_LinkTable('LinkTableName', 'SourceTableName', 'Field1, Field2, ...');
@@ -78,7 +78,7 @@ END SUB;
 LET varPeriodStart = NUM(Today() - 60);
 
 table_sales:
-LOAD 
+LOAD
     DATE(FLOOR($(varPeriodStart) + (rand() * 60))) AS period
     , floor(rand()*150)+1 AS id_goods
     , floor(rand()*10)+1 AS id_shop
@@ -89,7 +89,7 @@ AUTOGENERATE 10000
 
 
 table_plan:
-LOAD 
+LOAD
     DATE(FLOOR($(varPeriodStart) + (rand() * 60))) AS period
     , floor(rand()*150)+1 AS id_goods
     , floor(rand()*10)+1 AS id_shop
@@ -100,13 +100,13 @@ AUTOGENERATE 10000
 
 
 table_goods:
-LOAD 
+LOAD
     FIELDVALUE ('id_goods', RowNo()) as id_goods
     , 'good_' & FIELDVALUE ('id_goods', RowNo()) as goods_name
 AUTOGENERATE FIELDVALUECOUNT ('id_goods');
 
 table_shops:
-LOAD 
+LOAD
     FIELDVALUE ('id_shop', RowNo()) as id_shop
     , 'shop_' & FIELDVALUE ('id_shop', RowNo()) as shop_name
 AUTOGENERATE FIELDVALUECOUNT ('id_shop');
