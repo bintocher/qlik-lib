@@ -1,3 +1,30 @@
+# Таблица связей через функцию
+
+## Описание
+Известно, что для правильной работы модели данных, таблицы должны быть соеденены между собой только 1 полем, а что делать если у нас в 2 или более таблицах от 2 одинаковых полей? 
+Мы же не хотим держать SSyn-таблицы внутри модели? Иначе у нас будут не верные рассчёты..
+![image](https://user-images.githubusercontent.com/8188055/189489304-47246296-1770-4478-ae8d-c67344823c6f.png)
+
+Тут нам на помощь приходит функция создания промежуточной таблицы связей между таблицами.
+Помните, что функции должны быть написаны в скрипте ранее, чем они будут вызваны.
+И так, синтаксис:
+```
+CALL ls_LinkTable ('имя новой или существующей таблицы связей', 'имя таблицы из которой нужно забрать поля', 'поля перечисленные через запятую' );
+```
+Например, написав 2 строчки в коде, мы сделаем связи между 2 таблицами по 3 полям:
+```
+CALL ls_LinkTable ('plan-fact_link', 'table_sales', 'period, id_goods, id_shop');
+CALL ls_LinkTable ('plan-fact_link', 'table_plan', 'period, id_goods, id_shop');
+```
+![image](https://user-images.githubusercontent.com/8188055/189489443-57ebaaad-177d-42f8-8f57-5dc24f10ea3a.png)
+
+Результатом выполенения фунций - будет новая таблица, в которой будет ключевое поле и 3 поля из 2 таблиц, в основных таблицах останется только ключевое поле
+**Важно!** На ключевое поле - используется функции AUTONUMBER() для оптимизации работы Qlik Engine, и уменьшения объемов данных.
+![image](https://user-images.githubusercontent.com/8188055/189489593-383f5b8b-8b30-41a1-b86c-6117adb193c7.png)
+
+Тестовое приложение можно забрать тут: [link tables.zip](https://github.com/bintocher/qlik-lib/files/9540704/link.tables.zip)
+
+## Код функции
 ```
 SUB ls_LinkTable (ls_linkTableName, ls_table, ls_fields)
 
@@ -41,4 +68,51 @@ SET ls_LinkTableTemp=;
 AUTONUMBER [%$(ls_linkTableName)_Key] USING '$(ls_linkTableName)';
 
 END SUB;
+```
+
+
+## Код генерации тестовых данных
+
+Код должен быть расположен после написания кода функции
+```
+LET varPeriodStart = NUM(Today() - 60);
+
+table_sales:
+LOAD 
+    DATE(FLOOR($(varPeriodStart) + (rand() * 60))) AS period
+    , floor(rand()*150)+1 AS id_goods
+    , floor(rand()*10)+1 AS id_shop
+    , floor(rand() * 1000) + 10 AS fact_sales
+    , floor(rand() * 20) + 1 AS fact_quant
+AUTOGENERATE 10000
+;
+
+
+table_plan:
+LOAD 
+    DATE(FLOOR($(varPeriodStart) + (rand() * 60))) AS period
+    , floor(rand()*150)+1 AS id_goods
+    , floor(rand()*10)+1 AS id_shop
+    , floor(rand() * 1000) + 10 AS plan_sales
+    , floor(rand() * 20) + 1 AS plan_quant
+AUTOGENERATE 10000
+;
+
+
+table_goods:
+LOAD 
+    FIELDVALUE ('id_goods', RowNo()) as id_goods
+    , 'good_' & FIELDVALUE ('id_goods', RowNo()) as goods_name
+AUTOGENERATE FIELDVALUECOUNT ('id_goods');
+
+table_shops:
+LOAD 
+    FIELDVALUE ('id_shop', RowNo()) as id_shop
+    , 'shop_' & FIELDVALUE ('id_shop', RowNo()) as shop_name
+AUTOGENERATE FIELDVALUECOUNT ('id_shop');
+
+
+CALL ls_LinkTable ('plan-fact_link', 'table_sales', 'period, id_goods, id_shop');
+CALL ls_LinkTable ('plan-fact_link', 'table_plan', 'period, id_goods, id_shop');
+
 ```
