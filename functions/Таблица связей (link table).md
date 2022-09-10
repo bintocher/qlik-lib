@@ -41,7 +41,7 @@ SUB ls_LinkTable (ls_linkTableName, ls_table, ls_fields)
 // @синтаксис: CALL ls_LinkTable('LinkTableName', 'SourceTableName2', 'Field1, Field2, ...');
 
 // Генерируем произвольное наименование временной таблицы
-LET ls_LinkTableTemp = '$(ls_linkTableName)' & '_temp_' & KEEPCHAR(NOW(1),'0123456789');
+LET ls_LinkTableTemp = '$(ls_linkTableName)' & '_temp_' & KEEPCHAR(NOW(),'0123456789');
 
 [$(ls_LinkTableTemp)]:
 NOCONCATENATE LOAD DISTINCT
