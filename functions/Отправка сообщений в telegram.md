@@ -44,63 +44,63 @@ CALL ('Привет из Qlik. https://t.me/+wGlxShJJqshlNThi');
 ```
 SUB ls_SendTelegramMessage(ls_varTextMessage)
 
-    LET ls_varTelegramChat_ID = '';
-    LET ls_varTelegramToken = '';
-    LET ls_varConnectName = '';
+LET ls_varTelegramChat_ID = '';
+LET ls_varTelegramToken = '';
+LET ls_varConnectName = '';
 
-	[MAP Telegram chars]:
-	Mapping
-	LOAD * INLINE [
-		Неправильный символ, Правильный символ
-		" " , "%20 "
-		" H" , "_H"
-		/ ,"%2f "
-		\ ,"%5c "
-		! ,"%21 "
-		? ,"%3f "
-		( ,"%28 "
-		) ,"%29 "
-		* ,"%2a "
-		+ ,"%2b "
-		: ,"%3a "
-		; ,"%3b "
-		@ ,"%40 "
-		# ,"%23 "
-		$ ,"%24 "
-		& ,"%26 "
-		< ,"%3c "
-		= ,"%3d "
-		> ,"%3e "
-	];
+[MAP Telegram chars]:
+Mapping
+LOAD * INLINE [
+Неправильный символ, Правильный символ
+" " , "%20 "
+" H" , "_H"
+/ ,"%2f "
+\ ,"%5c "
+! ,"%21 "
+? ,"%3f "
+( ,"%28 "
+) ,"%29 "
+* ,"%2a "
++ ,"%2b "
+: ,"%3a "
+; ,"%3b "
+@ ,"%40 "
+# ,"%23 "
+$ ,"%24 "
+& ,"%26 "
+< ,"%3c "
+= ,"%3d "
+> ,"%3e "
+];
 
 
-	LET ls_varTextMessage = trim(KeepChar('$(ls_varTextMessage)', 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,_- №1234567890%/\!?()*+:;[]@#$&<=>'));
-	LET ls_varTextMessage = Replace('$(ls_varTextMessage)','[','%5b');
-	LET ls_varTextMessage = Replace('$(ls_varTextMessage)',']','%5d');
-	LET ls_varTextMessage = MapSubString('MAP Telegram chars','$(ls_varTextMessage)');
-	LET ls_varTextMessage = Replace(Replace(Replace('$(ls_varTextMessage)',chr(39),' '),chr(13),' '),chr(10),' ');
-	LET ls_varTextMessage = Replace('$(ls_varTextMessage)',chr(10),' ');
-	LET ls_varTextMessage = Replace('$(ls_varTextMessage)',chr(13),' ');
-	LET ls_varTextMessage = Replace('$(ls_varTextMessage)',chr(39),' ');
-	LET ls_varTextMessage = Replace('$(ls_varTextMessage)','  ',' ');
-	LET ls_varTextMessage = Replace('$(ls_varTextMessage)','  ',' ');
-	LET ls_varTextMessage = Replace('$(ls_varTextMessage)','  ',' ');
-	LET ls_varTextMessage = Replace('$(ls_varTextMessage)','	',' ');
-	LET ls_varTextMessage = Replace('$(ls_varTextMessage)',' .','.');
-	LET ls_varTextMessage = Replace('$(ls_varTextMessage)',' ,',',');
+LET ls_varTextMessage = trim(KeepChar('$(ls_varTextMessage)', 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,_- №1234567890%/\!?()*+:;[]@#$&<=>'));
+LET ls_varTextMessage = Replace('$(ls_varTextMessage)','[','%5b');
+LET ls_varTextMessage = Replace('$(ls_varTextMessage)',']','%5d');
+LET ls_varTextMessage = MapSubString('MAP Telegram chars','$(ls_varTextMessage)');
+LET ls_varTextMessage = Replace(Replace(Replace('$(ls_varTextMessage)',chr(39),' '),chr(13),' '),chr(10),' ');
+LET ls_varTextMessage = Replace('$(ls_varTextMessage)',chr(10),' ');
+LET ls_varTextMessage = Replace('$(ls_varTextMessage)',chr(13),' ');
+LET ls_varTextMessage = Replace('$(ls_varTextMessage)',chr(39),' ');
+LET ls_varTextMessage = Replace('$(ls_varTextMessage)','  ',' ');
+LET ls_varTextMessage = Replace('$(ls_varTextMessage)','  ',' ');
+LET ls_varTextMessage = Replace('$(ls_varTextMessage)','  ',' ');
+LET ls_varTextMessage = Replace('$(ls_varTextMessage)','	',' ');
+LET ls_varTextMessage = Replace('$(ls_varTextMessage)',' .','.');
+LET ls_varTextMessage = Replace('$(ls_varTextMessage)',' ,',',');
 
-	LET ls_varTextMessage = ApplyCodepage('$(ls_varTextMessage)',65001); //Left(ApplyCodepage('$(ls_varTextMessage)',65001),3000);
-	LET vUrlFull =  'https://api.telegram.org/bot$(ls_varTelegramToken)/sendMessage?chat_id=$(ls_varTelegramChat_ID)&text=$(ls_varTextMessage)&parse_mode=HTML';
+LET ls_varTextMessage = ApplyCodepage('$(ls_varTextMessage)',65001); //Left(ApplyCodepage('$(ls_varTextMessage)',65001),3000);
+LET vUrlFull =  'https://api.telegram.org/bot$(ls_varTelegramToken)/sendMessage?chat_id=$(ls_varTelegramChat_ID)&text=$(ls_varTextMessage)&parse_mode=HTML';
 
-    LET ls_varTempTableName = '_temp_' & KEEPCHAR(NOW(),'0123456789')
-	[$(ls_varTempTableName)]:
-	LOAD
-        NULL() as response
-	FROM [lib://$(ls_varConnectName)] (url is [$(vUrlFull)],utf8 );
+LET ls_varTempTableName = '_temp_' & KEEPCHAR(NOW(),'0123456789')
+[$(ls_varTempTableName)]:
+LOAD
+    NULL() as response
+FROM [lib://$(ls_varConnectName)] (url is [$(vUrlFull)],utf8 );
 
-	DROP Table [$(ls_varTempTableName)];
-    LET ls_varTextMessage = ;
-    LET ls_varTempTableName = ;
+DROP Table [$(ls_varTempTableName)];
+LET ls_varTextMessage = ;
+LET ls_varTempTableName = ;
 
 END SUB
 ```
