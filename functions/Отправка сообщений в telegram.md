@@ -1,20 +1,5 @@
 # Функция отправки сообщений в telegram из Qlik Sense
 
-## Настройка Qlik
-
-Необходимо создать web-коннект и запомнить его имя, позже, в скрипте нужно имя коннекта написать в переменную **ls_varConnectName**
-
-![image](https://user-images.githubusercontent.com/8188055/190596401-11e7e7af-983f-414b-8022-d59a1daee2fd.png)
-
-![image](https://user-images.githubusercontent.com/8188055/190596434-59273cfb-d94b-4af0-aeaf-047cb8c24a4b.png)
-
-![image](https://user-images.githubusercontent.com/8188055/190596578-85e8b67d-a408-4a78-92d1-9ce3c0515a9a.png)
-
-Обязательно в URL указывам в конце слэш "/", иначе получим ошибку
-
-![image](https://user-images.githubusercontent.com/8188055/190596728-2f541f72-c134-447a-82d9-512aa26dd216.png)
-
-
 ## Создание бота в telegram
 
 Стучимся к боту https://t.me/botfather и создаем своего бота, получаем токен и запишем его позже в переменную **ls_varTelegramToken**
@@ -33,11 +18,28 @@
 
 Необходимо заполнить переменные: **ls_varTelegramChat_ID** , **ls_varTelegramToken**, **ls_varConnectName**
 
-## Функция и как с ней работать
+## Отправка через web-connect
+
+### Настройка web-connect Qlik
+
+Необходимо создать web-коннект и запомнить его имя, позже, в скрипте нужно имя коннекта написать в переменную **ls_varConnectName**
+
+![image](https://user-images.githubusercontent.com/8188055/190596401-11e7e7af-983f-414b-8022-d59a1daee2fd.png)
+
+![image](https://user-images.githubusercontent.com/8188055/190596434-59273cfb-d94b-4af0-aeaf-047cb8c24a4b.png)
+
+![image](https://user-images.githubusercontent.com/8188055/190596578-85e8b67d-a408-4a78-92d1-9ce3c0515a9a.png)
+
+Обязательно в URL указывам в конце слэш "/", иначе получим ошибку
+
+![image](https://user-images.githubusercontent.com/8188055/190596728-2f541f72-c134-447a-82d9-512aa26dd216.png)
+
+
+### Функция и как с ней работать
 
 Вызов функции и передача в неё сообщения
 ```
-CALL ('Привет из Qlik. https://t.me/+wGlxShJJqshlNThi');
+CALL ls_SendTelegramMessage('Привет из Qlik. https://t.me/+wGlxShJJqshlNThi');
 ```
 Код функции, должен быть расположен в скрипте раньше, чем она будет вызвана
 
@@ -103,4 +105,53 @@ LET ls_varTextMessage = ;
 LET ls_varTempTableName = ;
 
 END SUB
+```
+
+## Отправка через REST API
+
+### Настройка REST-соединения
+
+Создаем новое REST-соединение
+
+
+В качестве URL можно использовать например https://httpbin.org/get
+
+Запоминаем название коннекта, в скрипте нужно имя коннекта написать в переменную **ls_varConnectName**
+
+
+
+### Функция для отправки через REST API и как с ней работать
+
+Вызов функции и передача в неё сообщения
+```
+CALL ls_SendTelegramMessage('Привет из Qlik. https://t.me/+wGlxShJJqshlNThi');
+```
+Код функции, должен быть расположен в скрипте раньше, чем она будет вызвана
+```
+SUB ls_SendTelegramMessage(ls_varTextMessage)
+
+
+LET ls_varTelegramChat_ID = '';
+LET ls_varTelegramToken = '';
+LET ls_varConnectName = '';
+
+
+
+LET varUrl = 'https://api.telegram.org/bot$(ls_varTelegramToken)/sendMessage?chat_id=$(ls_varTelegramChat_ID)&text=$(ls_varTextMessage)';  // Перенос строки = %0A
+
+LIB CONNECT TO [$(ls_varConnectName)];
+
+ls_RestConnectTable:
+SQL
+SELECT
+	"__KEY_root"
+    , "ok"
+FROM JSON (wrap on) "root" PK "__KEY_root"
+WITH CONNECTION(
+	Url "$(varUrl)"
+    );
+
+DROP TABLE ls_RestConnectTable;
+
+END SUB;
 ```
