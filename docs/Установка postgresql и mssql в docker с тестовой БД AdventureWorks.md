@@ -15,6 +15,11 @@
 
 ``` cmd
 docker run -p 5432:5432 -e 'POSTGRES_PASSWORD=my_password' -d chriseaton/adventureworks:postgres
+
+REM Как подсказали, возможно, нужно убрать кавычки чтобы сработало. Вероятно это зависит от версии докера
+
+docker run -p 5432:5432 -e POSTGRES_PASSWORD=my_password -d chriseaton/adventureworks:postgres
+
 ```
 
 ![image](https://user-images.githubusercontent.com/8188055/193648493-0bc9411d-15d0-41e1-a47c-db9b98b8333a.png)
@@ -41,4 +46,3 @@ docker run -p 1433:1433 -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=my_password' -d chris
 ![image](https://user-images.githubusercontent.com/8188055/193648615-02d2558b-d3aa-4656-bbf0-3984fa5a4e41.png)
 
 ![image](https://user-images.githubusercontent.com/8188055/193648806-5f124d1c-77f6-47b2-8a4d-c15e6f864882.png)
-
