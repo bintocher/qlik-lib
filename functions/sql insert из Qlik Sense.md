@@ -132,10 +132,12 @@ FOR i = 0 to NOOFROWS('$(varTable).SQLValues') - 1
                 '$(varLB)$(varLB)!EXECUTE_NON_SELECT_QUERY;$(varLB)$(varLB)DISCONNECT;$(varLB)$(varLB)';
     // Вызвать SQL запрос, добавлен коннект и дисконнект в БД
     $(varSQL)
-    DROP TABLE [$(varTable).SQLValues];
+
     varSQL=;
 NEXT i;
 i=;
+// Дроп таблицы
+DROP TABLE [$(varTable).SQLValues];
 ```
 
 ## Функция для бд MS SQL
