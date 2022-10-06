@@ -20,6 +20,8 @@ https://www.w3schools.com/sql/sql_insert.asp
 
 https://support.qlik.com/articles/000064538
 
+https://help.qlik.com/en-US/connectors/Subsystems/ODBC_connector_help/Content/Connectors_ODBC/How-to-load-without-SELECT.htm
+
 
 
 ## Подготовка
