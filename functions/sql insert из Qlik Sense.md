@@ -37,6 +37,8 @@ CREATE TABLE "Person".qliktable (
 	personname varchar NOT NULL
 );
 ```
+![image](https://user-images.githubusercontent.com/8188055/194236938-bd4c68be-fac0-4660-966e-62d28c609f90.png)
+
 
 ### Выдаем разрешения в Qlik
 
@@ -56,6 +58,9 @@ C:\Program Files\Common Files\QlikTech\Custom Data\QvOdbcConnectorPackage\
 ```
 
 Открываем вышеуказанный файл и редактируем параметр allow-nonselect-queries, ставим значение True. **Обязательно с Большой буквы**
+
+![image](https://user-images.githubusercontent.com/8188055/194237031-5dac45e4-5ba0-47d1-aab9-c1c531b99d83.png)
+
 
 Это изменение, позволяет нам использовать Qlik по-полной, можно выполнять запросы: INSERT/UPDATE/DELETE/DROP
 
