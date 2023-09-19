@@ -1,0 +1,35 @@
+# Qlik FAQ
+
+|Описание/Вопрос|Автор|Решение|
+|---|---|---|
+|Установка SSL сертификата на сервер Qlik Sense|Игорь Буробин|[ссылка](https://www.youtube.com/watch?v=z3D7XVQGwmc)|
+|Доступ невозможен - большое количество сеансов?|Игорь Буробин|[ссылка](https://www.youtube.com/watch?v=czq3N8GPyjM)|
+|почти ВЕСЬ Set Analysis в Qlik Sense за 50 минут|Евгений Стучалкин|[ссылка](https://www.youtube.com/watch?v=H7oFmmus8Z0)|
+|Qlik Sense - интерфейсный тренажер|Евгений Стучалкин|[ссылка](https://www.youtube.com/watch?v=sGdKS-AwaMU)|
+|Календарь накопительного итога. As-of-calendar|Евгений Стучалкин|[ссылка](https://bi2business.ru/5-3-kalendar-nakopitelnogo-itoga-as-of-calendar/)|
+|Красивые подписи на временной оси. Derived Fields|Евгений Стучалкин|[ссылка](https://bi2business.ru/5-2-krasivye-podpisi-na-vremennoj-osi-derived-fields/)|
+|Главный календарь (Master Calendar)|Евгений Стучалкин|[ссылка](https://bi2business.ru/5-1-glavnyj-kalendar-master-calendar/)|
+|Анализ множеств (Set Analysis), введение|Евгений Стучалкин|[ссылка](https://bi2business.ru/2-0-analiz-mnozhestv-set-analysis-vvedenie/)|
+|Идентификаторы множеств|Евгений Стучалкин|[ссылка](https://bi2business.ru/2-1-identifikatory-mnozhestv/)|
+|Взаимодействия множеств|Евгений Стучалкин|[ссылка](https://bi2business.ru/2-2-vzaimodejstviya-mnozhestv/)|
+|Модификаторы множеств|Евгений Стучалкин|[ссылка](https://bi2business.ru/2-3-modifikatory-mnozhestv/)|
+|Динамические модификаторы множеств|Евгений Стучалкин|[ссылка](https://bi2business.ru/2-4-dinamicheskie-modifikatory-mnozhestv/)|
+|Создание простого приложения в Qlik Sense|Евгений Стучалкин|[ссылка](https://bi2business.ru/2-sozdanie-prostogo-prilozheniya-v-qlik-sense/)|
+|Основы создания визуализаций в Qlik Sense|Евгений Стучалкин|[ссылка](https://bi2business.ru/3-osnovy-sozdaniya-vizualizacij-v-qlik-sense/)|
+|Работа с фильтрами и выборками в Qlik Sense|Евгений Стучалкин|[ссылка](https://bi2business.ru/4-filters-qlik-sense/)|
+|Альтернативные состояния. Создаем контекст для анализа|Евгений Стучалкин|[ссылка](https://bi2business.ru/1-4-alternativnye-sostoyaniya-sozdaem-kontekst-dlya-analiza/)|
+|Styling Sense Tables with Properties and CSS|Christof Schwarz|[ссылка](https://www.youtube.com/watch?v=9lhL3Nrel5Q)|
+|Qlik Sense Superhub - free from data/\bridge|Christof Schwarz|[ссылка](https://www.youtube.com/watch?v=pWPxkFFvvB0)|
+|Which Task is reloading my Qlik Sense Script?|Christof Schwarz|[ссылка видео](https://www.youtube.com/watch?v=jiJDDV9B_QU) + [qvs-файл скрипта](https://github.com/ChristofSchwarz/QlikScripts/blob/master/who_reloads_me.qvs)|
+|SMTP email notification Qlik Sense on task failure|Christof Schwarz|[ссылка](https://www.youtube.com/watch?v=Px4pvSlqK0s) + [git репозиторий](https://github.com/ChristofSchwarz/qs_log4net_appender)|
+|Import Json Trees with Qlik REST Connector|Christof Schwarz|[ссылка](https://www.youtube.com/watch?v=8xkwFjDjO84) + [git репозиторий](https://github.com/ChristofSchwarz/QlikScripts/tree/master/rest-connector)|
+|Henric Cronstrom: Qlik под капотом|Henric Cronstrom|[ссылка](https://www.youtube.com/watch?v=2DUb9BOjPvw)|
+|QIX engine: under the hood|Henric Cronstrom|[ссылка](https://www.youtube.com/watch?v=wevhFK_AID8)|
+
+## Авторы контента, контакты
+
+- Чернов Станислав, [telegram](https://t.me/chernov)
+- Евгений Стучалкин, [telegram](https://t.me/stuchalkin)
+- Игорь Буробин, [telegram](https://t.me/iburobin)
+- Christof Schwarz [twitter](https://twitter.com/cschwarz74)
+- Henric Cronstrom - Qlik Vice President Products
