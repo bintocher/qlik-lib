@@ -26,6 +26,15 @@
 |Import Json Trees with Qlik REST Connector|Christof Schwarz|[ссылка](https://www.youtube.com/watch?v=8xkwFjDjO84) + [git репозиторий](https://github.com/ChristofSchwarz/QlikScripts/tree/master/rest-connector)|
 |Henric Cronstrom: Qlik под капотом|Henric Cronstrom|[ссылка](https://www.youtube.com/watch?v=2DUb9BOjPvw)|
 |QIX engine: under the hood|Henric Cronstrom|[ссылка](https://www.youtube.com/watch?v=wevhFK_AID8)|
+|Маппинг полей с использованием маски с символами * и ?|Чернов Станислав|[ссылка](https://github.com/bintocher/qlik-lib/blob/main/functions/Mapping%20значений%20по%20маске.md)|
+|Выгрузка данных из таблиц Qlik в SQL|Чернов Станислав|[ссылка](https://github.com/bintocher/qlik-lib/blob/main/functions/sql%20insert%20из%20Qlik%20Sense.md)|
+|Генератор периодов|Чернов Станислав|[ссылка](https://github.com/bintocher/qlik-lib/blob/main/functions/Генератор%20периодов.md)|
+|Как из поля со списком сделать строки|Чернов Станислав|[ссылка](https://github.com/bintocher/qlik-lib/blob/main/functions/Как%20из%20поля%20со%20списком%20сделать%20строки.md)|
+|Функция отправки сообщений в telegram из Qlik Sense|Чернов Станислав|[ссылка](https://github.com/bintocher/qlik-lib/blob/main/functions/Отправка%20сообщений%20в%20telegram.md)|
+|Получение уникальных значений из таблицы|Чернов Станислав|[ссылка](https://github.com/bintocher/qlik-lib/blob/main/functions/Получение%20уникальных%20значений%20из%20таблицы.md)|
+|Таблица связей (link table)|Чернов Станислав|[ссылка](https://github.com/bintocher/qlik-lib/blob/main/functions/Таблица%20связей%20(link%20table).md)|
+|Функция создания distinct таблицы|Чернов Станислав|[ссылка](https://github.com/bintocher/qlik-lib/blob/main/functions/Функция%20создания%20distinct%20таблицы.md)|
+
 
 ## Авторы контента, контакты
 
