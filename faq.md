@@ -18,6 +18,7 @@
 |Основы создания визуализаций в Qlik Sense|Евгений Стучалкин|[ссылка](https://bi2business.ru/3-osnovy-sozdaniya-vizualizacij-v-qlik-sense/)|
 |Работа с фильтрами и выборками в Qlik Sense|Евгений Стучалкин|[ссылка](https://bi2business.ru/4-filters-qlik-sense/)|
 |Альтернативные состояния. Создаем контекст для анализа|Евгений Стучалкин|[ссылка](https://bi2business.ru/1-4-alternativnye-sostoyaniya-sozdaem-kontekst-dlya-analiza/)|
+|Динамическая классификация интервалов, функция для class()|Евгений Стучалкин|[ссылка](http://bi2business.ru/dinamicheskaya-klassifikaciya-intervalov/)|
 |Styling Sense Tables with Properties and CSS|Christof Schwarz|[ссылка](https://www.youtube.com/watch?v=9lhL3Nrel5Q)|
 |Qlik Sense Superhub - free from data/\bridge|Christof Schwarz|[ссылка](https://www.youtube.com/watch?v=pWPxkFFvvB0)|
 |Which Task is reloading my Qlik Sense Script?|Christof Schwarz|[ссылка видео](https://www.youtube.com/watch?v=jiJDDV9B_QU) + [qvs-файл скрипта](https://github.com/ChristofSchwarz/QlikScripts/blob/master/who_reloads_me.qvs)|
