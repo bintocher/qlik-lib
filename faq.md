@@ -2,6 +2,7 @@
 
 |Описание/Вопрос|Автор|Решение|
 |---|---|---|
+|Начинаем обучение с Qlik с сайта dataroad.kz|Коллективное творчество|[ссылка](https://dataroad.kz)|
 |Установка SSL сертификата на сервер Qlik Sense|Игорь Буробин|[ссылка](https://www.youtube.com/watch?v=z3D7XVQGwmc)|
 |Доступ невозможен - большое количество сеансов?|Игорь Буробин|[ссылка](https://www.youtube.com/watch?v=czq3N8GPyjM)|
 |почти ВЕСЬ Set Analysis в Qlik Sense за 50 минут|Евгений Стучалкин|[ссылка](https://www.youtube.com/watch?v=H7oFmmus8Z0)|
